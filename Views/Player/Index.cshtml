@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MvcProject.Models.Player>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-secondary" asp-action="Create">Create New</a>
+    <a class="btn btn-secondary" asp-action="OrderByNick">Order By Nickname</a>
+    <a class="btn btn-secondary" asp-action="OrderByCountry">Order By Country of birth</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Name:
+        </th>
+        <th>
+            Main role:
+        </th>
+        <th>
+            Country:
+        </th>
+        
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.PlayerId">
+                    @Html.DisplayFor(modelItem => item.FirstName) 
+                    "@Html.DisplayFor(modelItem => item.Nickname)"
+                    @Html.DisplayFor(modelItem => item.LastName) 
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryOfBirth)
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PlayerId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.PlayerId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

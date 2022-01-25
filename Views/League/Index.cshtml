@@ -1,0 +1,86 @@
+﻿@model IEnumerable<MvcProject.Models.League>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+<title>Leagues</title>
+
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: white;
+        }
+        
+        .active {
+          background-color: #4CAF50;
+        }
+        
+        body {
+          background-color: black;
+          text-align: center;
+          color: white;
+        }
+        
+        ul.ligi {
+            list-style-type:none;
+            color: #0000FF;
+            padding: 10px 20px;
+            background-color: #555;
+            width: 40%;
+            display: table;
+            margin: 0 auto;
+        }
+        
+        .ligi li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+
+    </style>
+
+</head>
+
+<h1>Leagues:</h1>
+
+<p>
+    <a class="btn btn-secondary" asp-action="Create">Create New</a>
+</p>
+<table class="table" style="color: white;">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Localization)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.LeagueId">
+                @Html.DisplayFor(modelItem => item.Name)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localization)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LeagueId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.LeagueId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

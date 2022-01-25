@@ -1,0 +1,82 @@
+﻿@model IEnumerable<MvcProject.Models.Team>
+
+@{
+    ViewData["Title"] = "OrderByName";
+}
+
+<h1>Teams:</h1>
+
+<p>
+    <a class="btn btn-secondary" asp-action="Create">Create New</a>
+    <a class="btn btn-secondary" asp-action="OrderBySeason">Order By Season</a>
+    <a class="btn btn-secondary" asp-action="OrderByName">Order By Name</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Name:
+        </th>
+        <th>
+            Season:
+        </th>
+        
+        <th>
+            Clasyfication:
+        </th>
+        <th>
+            Toplaner:
+        </th>
+        <th>
+            Jungler:
+        </th>
+        <th>
+            Midlaner:
+        </th>
+        <th>
+            ADC:
+        </th>
+        <th>
+            Support:
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.TeamId">
+                @Html.DisplayFor(modelItem => item.Name)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seazon.DataTextFieldLabel)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Classification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TopPlayer.Nickname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JungPlayer.Nickname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MidPlayer.Nickname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdcPlayer.Nickname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SuppPlayer.Nickname)
+            </td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TeamId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.TeamId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

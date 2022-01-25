@@ -1,0 +1,67 @@
+﻿@model MvcProject.Models.Team
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Team</h1>
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Seazon):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Seazon.DataTextFieldLabel)
+        </dd>
+        <dt class = "col-sm-2">
+            Classification:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Classification)
+        </dd>
+        <dt class = "col-sm-2">
+            Toplaner:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TopPlayer.DataTextFieldLabel)
+        </dd>
+        <dt class = "col-sm-2">
+            Jungler:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.JungPlayer.DataTextFieldLabel)
+        </dd>
+        <dt class = "col-sm-2">
+            Midlaner:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MidPlayer.DataTextFieldLabel)
+        </dd>
+        <dt class = "col-sm-2">
+            ADC:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AdcPlayer.DataTextFieldLabel)
+        </dd>
+        <dt class = "col-sm-2">
+            Support:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SuppPlayer.DataTextFieldLabel)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.TeamId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

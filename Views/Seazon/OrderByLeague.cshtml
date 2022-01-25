@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MvcProject.Models.Seazon>
+
+@{
+    ViewData["Title"] = "OrderByLeague";
+}
+
+<h1>Seasons:</h1>
+
+<p>
+    <a class="btn btn-secondary" asp-action="Create">Create New</a>
+    <a class="btn btn-secondary" asp-action="Index">List with Search</a>
+    <a class="btn btn-secondary" asp-action="OrderByLeague">Order by League</a>
+    <a class="btn btn-secondary" asp-action="OrderByYear">Order by year</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.League)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.League.Name)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.SeazonId">
+                @Html.DisplayFor(modelItem => item.Name)</a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SeazonId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.SeazonId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

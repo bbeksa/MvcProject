@@ -1,0 +1,55 @@
+﻿@model MvcProject.Models.Seazon
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Season</h1>
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.League):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.League.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.League.Localization):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.League.Localization)
+        </dd>
+        <dt class = "col-sm-2">
+            Split Name:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.SeazonId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+@if (@Model?.Teams != null)
+{
+    <div>
+        <h5>Teams classification:</h5>
+        <hr />
+        <dl class="row">
+            @foreach (var team in @Model?.Teams.OrderBy(t => t.Classification)) {
+                <dt class = "col-sm-2">
+                    @team.Classification:
+                </dt>
+                <dd class="col-sm-10">
+                    <a class="nav-link" asp-area="" asp-controller="Team" asp-action="Details" asp-route-id="@team.TeamId">
+                    @team.Name
+                    </a>
+                </dd>
+            }
+        </dl>
+    </div>
+}

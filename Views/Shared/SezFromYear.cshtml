@@ -1,0 +1,8 @@
+﻿@model System.Collections.Generic.IEnumerable<MvcProject.Models.Seazon>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(model => item.DataTextFieldLabel)</td>
+    </tr>
+}
